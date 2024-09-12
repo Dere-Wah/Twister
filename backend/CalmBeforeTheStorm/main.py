@@ -27,7 +27,7 @@ app = FastAPI(middleware=middleware)
 # Endpoint to evaluate the tweet
 @app.post("/eval", response_model=TweetEvaluationResponse)
 async def evaluate_tweet(request: TweetEvaluationRequest):
-    if request.controversy_score <= 40:
+    if request.controversy_score <= -10:
         res = await evaluate(request.body)
         if not res["flagged"]:
             tw = TweetEvaluationResponse(banned=0, controversial=False, replies=[],
