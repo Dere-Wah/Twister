@@ -5,7 +5,7 @@ import json
 
 from models import TweetEvaluationResponse
 
-client = OpenAI(api_key='FUCK YOU')
+client = OpenAI(api_key='')
 
 
 async def evaluate(text: str) -> any:

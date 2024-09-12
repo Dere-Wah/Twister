@@ -42,7 +42,6 @@ export default function Login({}){
                 login(username)
                 }}/>
 
-            
             <div className={`cool-scrollbar overflow-y-scroll px-2 text-sm w-full text-center overflow-hidden transition-height duration-300 ease-in-out ${showDisclaimer ? "h-52" : "h-0"}`}>
                 Some response from this game are AI-generated.
                 I, the developer, am funding myself the API cost for these requests.

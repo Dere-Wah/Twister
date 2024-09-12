@@ -17,7 +17,7 @@ export default function Tweet({tweet, new_tweet, can_edit}){
     const generateImageArray = (numImages) => {
         const images = [];
         for (let i = 1; i <= numImages; i++) {
-          images.push(`../src/assets/propics/image${i}.png`);
+          images.push(`./assets/propics/image${i}.png`);
         }
         return images;
       };
@@ -59,8 +59,8 @@ export default function Tweet({tweet, new_tweet, can_edit}){
     function hashStringToIndex(input, arrayLength) {
         let hash = 0;
         for (let i = 0; i < input.length; i++) {
-        hash = (hash << 5) - hash + input.charCodeAt(i);
-        hash = hash & hash; // Convert to 32bit integer
+            hash = (hash << 5) - hash + input.charCodeAt(i);
+            hash = hash & hash; // Convert to 32bit integer
         }
         return Math.abs(hash) % arrayLength; // Ensure non-negative index
     }

@@ -70,7 +70,7 @@ export default function Game({}){
     if(controversy_score >= 85 && Math.random() * 100 <= 30 && !youtubed){
         setYoutubed();
         let vid = new TweetElement("penguinz0", `${username} situation is crazy`)
-        vid.image = "../src/assets/miniature.png";
+        vid.image = "./assets/miniature.png";
         vid.can_edit = false;
         vid.followers = Math.floor(followers * -1 * 0.50)
         addFws(vid.followers);
