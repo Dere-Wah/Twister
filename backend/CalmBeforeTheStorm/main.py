@@ -1,23 +1,27 @@
 import math
 
-from fastapi import FastAPI, HTTPException
-from pydantic import BaseModel
+from fastapi import FastAPI
 import random
-from fastapi.middleware.cors import CORSMiddleware
+from starlette.middleware import Middleware
+from starlette.middleware.cors import CORSMiddleware
 
 from eval import evaluate, generate_comment
 from models import TweetEvaluationResponse, TweetEvaluationRequest, Reply
 import time
 
-app = FastAPI()
+middleware = [
+    Middleware(
+        CORSMiddleware,
+        allow_origins=['*'],
+        allow_credentials=True,
+        allow_methods=['*'],
+        allow_headers=['*']
+    )
+]
 
-app.add_middleware(
-    CORSMiddleware,
-    allow_origins=["*"],
-    allow_credentials=True,
-    allow_methods=["*"],
-    allow_headers=["*"],
-)
+app = FastAPI(middleware=middleware)
+
+
 
 
 # Endpoint to evaluate the tweet
