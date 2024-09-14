@@ -45,14 +45,20 @@ def handle_deleted_tweet(deleted: bool, response_type: str):
 
 
 # Helper function to construct the prompt based on controversy score
-def construct_prompt(old_tweets: str, deleted_text: str, users_amount: int, response_type: str):
+def construct_prompt(old_tweets: str, deleted_text: str, users_amount: int, response_type: str, controversy_scre: int):
     tweet_info = f"The list of the last tweets from this author is the following: {old_tweets}"
+
+    non_relevant_cond = ""
+    if controversy_scre <= 40:
+        non_relevant_cond = ("If the tweet DOES not contain any controversial opinion / message,"
+                             " post bored comments about wanting"
+                             f"new drama or they'll unfollow, explaining that the reason the poster"
+                             f" is losing followers is because they're"
+                             f"not relevant. If the tweets CONTAIN controversial opinions / message,")
 
     base_prompt = (f"Given the following tweet, determine if it is bannable or controversial, "
                    f"from 0 to 100%."
-                   f"If the tweet DOES not contain any controversial opinion / message, post bored comments about wanting"
-                   f"new drama or they'll unfollow, explaining that the reason the poster is losing followers is because they're"
-                   f"not relevant. If the tweets CONTAIN controversial opinions / message,"
+                   f"{non_relevant_cond}"
                    f"imitate {users_amount} comments that this tweet might have, "
                    f"pretending to be a {response_type} user reacting. Give the users fictional names."
                    f"{tweet_info}. {deleted_text}")
@@ -61,8 +67,8 @@ def construct_prompt(old_tweets: str, deleted_text: str, users_amount: int, resp
 
 
 # Main function to generate comment and handle different controversy scores
-async def generate_comment(author: str, body: str, deleted: bool, old_tweets: str, controversy_score: int) -> TweetEvaluationResponse:
-
+async def generate_comment(author: str, body: str, deleted: bool, old_tweets: str,
+                           controversy_score: int) -> TweetEvaluationResponse:
     # Step 1: Determine user amount and response type based on controversy score
     users_amount, response_type = determine_response_type(controversy_score, deleted)
 
@@ -70,7 +76,7 @@ async def generate_comment(author: str, body: str, deleted: bool, old_tweets: st
     deleted_text = handle_deleted_tweet(deleted, response_type)
 
     # Step 3: Construct the appropriate prompt based on the controversy score range
-    prompt = construct_prompt(old_tweets, deleted_text, users_amount, response_type)
+    prompt = construct_prompt(old_tweets, deleted_text, users_amount, response_type, controversy_score)
 
     if not deleted and random.randint(0, 100) <= 40:
         prompt = prompt + ("If the post is an apology, ACCEPT the APOLOGY! So lower the controversial/banned value and"
@@ -89,4 +95,3 @@ async def generate_comment(author: str, body: str, deleted: bool, old_tweets: st
     # Parse and return the result
     res = completion.choices[0].message.parsed
     return res
-
