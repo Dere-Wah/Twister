@@ -131,7 +131,12 @@ export default function Tweet({tweet, new_tweet, can_edit}){
         <div className={`flex flex-col w-full items-start ${!deleted ? "bg-white" : "bg-gradient-to-b from-white to-red-50"} border border-black/20 rounded-sm shadow-xl`}>
             <div className="flex flex-row w-full items-start">
                 <div className="min-w-8">
-                    <Icon icon="ic:sharp-account-circle" className="size-full"/>
+                    {(!new_tweet && tweet.profile_picture != null) &&
+                        <img src={tweet.profile_picture} alt="Profile" className="min-w-8 size-8 mx-1 rounded-full my-1" />
+                    }
+                    {(new_tweet || tweet.profile_picture == null) && 
+                        <Icon icon="ic:sharp-account-circle" className="size-full"/>
+                    }
                 </div>
                 <div className="w-full flex flex-col text-sm relative">
                     <div className="w-full flex flex-row gap-2 px-2">

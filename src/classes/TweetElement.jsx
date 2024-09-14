@@ -12,6 +12,7 @@ class TweetElement {
         this.controversy_score = null;
         this.image = null;
         this.can_edit = true;
+        this.profile_picture = null;
     }
 
 

@@ -82,7 +82,7 @@ export default function Game({}){
         vid.followers = Math.floor(followers * -1 * 0.50)
         addFws(vid.followers);
         vid.replies = [{"author": "Gamerboy123", "body": `Glad someone is addressing ${username}.`}, {"author": "Waffle", "body": "Dude is gonna be canceled soon..."}]
-        
+        vid.profile_picture = "./assets/charlie.png"
         publish_tweet(vid);
     }
     
