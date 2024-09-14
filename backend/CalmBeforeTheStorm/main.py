@@ -1,6 +1,6 @@
 import math
 
-from fastapi import FastAPI
+from fastapi import FastAPI, HTTPException
 import random
 from starlette.middleware import Middleware
 from starlette.middleware.cors import CORSMiddleware
@@ -22,11 +22,12 @@ middleware = [
 app = FastAPI(middleware=middleware)
 
 
-
-
 # Endpoint to evaluate the tweet
 @app.post("/eval", response_model=TweetEvaluationResponse)
 async def evaluate_tweet(request: TweetEvaluationRequest):
+    if len(request.body) > 200:
+        raise HTTPException(status_code=400, detail="Invalid request.")
+
     if request.controversy_score <= -10:
         res = await evaluate(request.body)
         if not res["flagged"]:

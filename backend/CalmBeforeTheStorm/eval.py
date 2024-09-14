@@ -49,8 +49,12 @@ def construct_prompt(old_tweets: str, deleted_text: str, users_amount: int, resp
     tweet_info = f"The list of the last tweets from this author is the following: {old_tweets}"
 
     base_prompt = (f"Given the following tweet, determine if it is bannable or controversial, "
-                   f"from 0 to 100%. Also imitate {users_amount} comments that this tweet might have, "
-                   f"pretending to be a {response_type} user reacting. Give the users fictional names. "
+                   f"from 0 to 100%."
+                   f"If the tweet DOES not contain any controversial opinion / message, post bored comments about wanting"
+                   f"new drama or they'll unfollow, explaining that the reason the poster is losing followers is because they're"
+                   f"not relevant. If the tweets CONTAIN controversial opinions / message,"
+                   f"imitate {users_amount} comments that this tweet might have, "
+                   f"pretending to be a {response_type} user reacting. Give the users fictional names."
                    f"{tweet_info}. {deleted_text}")
 
     return base_prompt

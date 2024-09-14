@@ -21,7 +21,7 @@ export default function Life({ controversial, banned }) {
     return (
         <div className="flex flex-col w-full justify-start h-full">
             <div className="text-[10px] font-bold">Controversial</div>
-            <div className="rounded-full min-h-[5px] border-red-900 border">
+            <div className="rounded-full min-h-[5px] border-blue-700 border">
                 <div
                 ref={sliderRefControversial}
                 className="bg-blue-700 rounded-full h-full transition-all duration-1000 ease-in-out"
@@ -32,7 +32,7 @@ export default function Life({ controversial, banned }) {
                 <div className="text-[10px] font-bold">Banned</div>
             }
             {banned != null && 
-                <div className="rounded-full min-h-[5px] border-blue-700 border">
+                <div className="rounded-full min-h-[5px] border-red-900 border">
                     <div
                     ref={sliderRefBanned}
                     className="bg-red-900 rounded-full h-full transition-all duration-1000 ease-in-out"

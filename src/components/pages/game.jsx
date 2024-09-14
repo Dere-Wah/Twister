@@ -49,13 +49,20 @@ export default function Game({}){
                             FORGOTTEN
                         </div>
                     }
-                    <div className="flex flex-col w-full px-2 gap-1">
-                        <div className="w-full text-sm text-center text-black group-hover:text-white duration-75">
+                    <div className="flex flex-col w-full gap-1">
+                        <div className="w-full text-sm text-center text-black group-hover:text-white duration-75 px-2">
                             Your career as a content creator has come to an end.
+                        </div>
+                        <div className="grid w-full font-extrabold text-center place-items-center bg-green-600 text-white transition-height ease duration-200 h-6 hover:h-12 hover:text-xl">
+                        You survived {tweets.length} tweets.
+                        </div>
+                        <div className="w-full text-sm text-center text-black group-hover:text-white duration-75 px-2">
                             This tweet specifically was the last straw:
                         </div>
-
                         <Tweet tweet={tweets[tweets.length - 1]} can_edit={false} />
+                        <div className="w-full text-sm text-center text-black group-hover:text-white duration-75 px-2">
+                            Can you beat your highscore?
+                        </div>
                     </div>
                     
                 </div>

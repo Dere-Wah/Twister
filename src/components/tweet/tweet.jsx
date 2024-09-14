@@ -22,8 +22,8 @@ export default function Tweet({tweet, new_tweet, can_edit}){
         return images;
       };
       
-      // Define the number of images you want
-      const images = generateImageArray(15);
+    // Define the number of images you want
+    const images = generateImageArray(18);
 
     if(can_edit == null && !new_tweet){
         can_edit = tweet.can_edit;
