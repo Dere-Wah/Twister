@@ -35,12 +35,12 @@ export default function Game({}){
                 <div className="group flex flex-col h-full gap-2 py-2 max-h-[350px] overflow-scroll overflow-x-hidden bg-red-600/0 hover:bg-red-900/90 transition-colors duration-700 ease cool-scrollbar">
                     <div className="w-full text-center font-extrabold text-3xl text-white bg-red-950">GAME OVER!</div>
                     {game_over >= 3 && 
-                        <div className="grid w-full font-extrabold text-center place-items-center bg-dodger-blue-700 text-white transition-height ease duration-200 h-6 hover:h-12 hover:text-xl">
+                        <div className="grid w-full font-extrabold text-center place-items-center bg-red-700 text-white transition-height ease duration-200 h-6 hover:h-12 hover:text-xl">
                             CANCELLED
                         </div>
                     }
                     {banned >= 3 && 
-                        <div className="grid w-full font-extrabold text-center place-items-center bg-red-700 text-white transition-height ease duration-200 h-6 hover:h-12 hover:text-xl">
+                        <div className="grid w-full font-extrabold text-center place-items-center bg-dodger-blue-700 text-white transition-height ease duration-200 h-6 hover:h-12 hover:text-xl">
                             BANNED
                         </div>
                     }

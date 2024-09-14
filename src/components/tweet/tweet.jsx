@@ -160,7 +160,7 @@ export default function Tweet({tweet, new_tweet, can_edit}){
                         </div>
                     }
                     {!new_tweet && 
-                        <div className={`text-sm h-full px-2 py-1`}>
+                        <div className="text-sm h-full px-2 py-1 break-allp hyphens-auto" lang="it">
                             {deleted && <span className="italic text-xs">This tweet has been deleted...</span>}
                             {!deleted && <span>{tweet.body}</span>}
                         </div>

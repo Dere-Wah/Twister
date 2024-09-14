@@ -24,7 +24,7 @@ export default function Life({ controversial, banned }) {
             <div className="rounded-full min-h-[5px] border-red-900 border">
                 <div
                 ref={sliderRefControversial}
-                className="bg-red-900 rounded-full h-full transition-all duration-1000 ease-in-out"
+                className="bg-blue-700 rounded-full h-full transition-all duration-1000 ease-in-out"
                 style={{ width: `${sliderWidthControversial}%` }}
                 />
             </div>
@@ -35,7 +35,7 @@ export default function Life({ controversial, banned }) {
                 <div className="rounded-full min-h-[5px] border-blue-700 border">
                     <div
                     ref={sliderRefBanned}
-                    className="bg-blue-700 rounded-full h-full transition-all duration-1000 ease-in-out"
+                    className="bg-red-900 rounded-full h-full transition-all duration-1000 ease-in-out"
                     style={{ width: `${sliderWidthBanned}%` }}
                     />
                 </div>
