@@ -1,54 +1,23 @@
-# Astro Starter Kit: Basics
+# Twister - Brackeys Game Jam 2024.2 Submission
 
-```sh
-npm create astro@latest -- --template basics
-```
+Running this game requires me to have a backend up and maintained, and due to the little influx of players, it's not sustainable. Therefore I have decided to shut the backend down. However, now the project is Open Source! If you're interested you can host locally the game and play locally. You can also setup your own backend if you're interested, simply change the backend address at
+`src\classes\TweetElement.jsx`
 
-[![Open in StackBlitz](https://developer.stackblitz.com/img/open_in_stackblitz.svg)](https://stackblitz.com/github/withastro/astro/tree/latest/examples/basics)
-[![Open with CodeSandbox](https://assets.codesandbox.io/github/button-edit-lime.svg)](https://codesandbox.io/p/sandbox/github/withastro/astro/tree/latest/examples/basics)
-[![Open in GitHub Codespaces](https://github.com/codespaces/badge.svg)](https://codespaces.new/withastro/astro?devcontainer_path=.devcontainer/basics/devcontainer.json)
+Also, you need to setup your OpenAI key. To do so, edit
+`backend\CalmBeforeTheStorm\eval.py`
 
-> 🧑‍🚀 **Seasoned astronaut?** Delete this file. Have fun!
+## BACKEND SETUP
+- Clone the repo, navigate into backend/CalmBeforeTheStorm/ 
+    `cd /backend/CalmBeforeTheStorm`
+- Run the backend with uvicorn. Select your desired port where you'll be running the backend.
+    `uvicorn main:app --reload --port <your port>`
+- Setup your server to redirect requests to the correct port. This really depends on your current setup, so I can't go into much details about this. What I did is setting up NGINX to accept HTTPS requests, and then forward these requests locally to the port 8001 in the local network, where FastAPI was listening.
 
-![just-the-basics](https://github.com/withastro/astro/assets/2244813/a0a5533c-a856-4198-8470-2d67b1d7c554)
 
-## 🚀 Project Structure
+## FRONTEND SETUP
+- Install ASTRO
+- Run the frontend: `npm run dev` or `npm run build` to make a build.
 
-Inside of your Astro project, you'll see the following folders and files:
 
-```text
-/
-├── public/
-│   └── favicon.svg
-├── src/
-│   ├── components/
-│   │   └── Card.astro
-│   ├── layouts/
-│   │   └── Layout.astro
-│   └── pages/
-│       └── index.astro
-└── package.json
-```
-
-Astro looks for `.astro` or `.md` files in the `src/pages/` directory. Each page is exposed as a route based on its file name.
-
-There's nothing special about `src/components/`, but that's where we like to put any Astro/React/Vue/Svelte/Preact components.
-
-Any static assets, like images, can be placed in the `public/` directory.
-
-## 🧞 Commands
-
-All commands are run from the root of the project, from a terminal:
-
-| Command                   | Action                                           |
-| :------------------------ | :----------------------------------------------- |
-| `npm install`             | Installs dependencies                            |
-| `npm run dev`             | Starts local dev server at `localhost:4321`      |
-| `npm run build`           | Build your production site to `./dist/`          |
-| `npm run preview`         | Preview your build locally, before deploying     |
-| `npm run astro ...`       | Run CLI commands like `astro add`, `astro check` |
-| `npm run astro -- --help` | Get help using the Astro CLI                     |
-
-## 👀 Want to learn more?
-
-Feel free to check [our documentation](https://docs.astro.build) or jump into our [Discord server](https://astro.build/chat).
+For a more In-Depth blog on the creation of this project, check out my blog:
+https://derewah.dev/projects/twister

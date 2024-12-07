@@ -1,4 +1,4 @@
-const backend = "https://spyfallbackend.derewah.dev"
+const backend = "https://backend.derewah.dev"
 
 class TweetElement {
     constructor(author, body) {
