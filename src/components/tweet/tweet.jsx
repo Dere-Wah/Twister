@@ -73,7 +73,6 @@ export default function Tweet({tweet, new_tweet, can_edit}){
 
     if(!new_tweet){
         useEffect(() => {
-            console.log("refreshing...");
         }, [tweet.key]);
     }
 
@@ -88,15 +87,12 @@ export default function Tweet({tweet, new_tweet, can_edit}){
 
         tweet.followers = Math.floor(((tweet.followers-10) / 100)*followers)
         setControversy(tweet.controversy_score)
-        console.log(tweet.controversy_score);
-        console.log(controversy_score);
         if((tweet.controversy_score >= 90 && game_over >= 1) ||
             (tweet.controversy_score >= 70 && game_over < 1)){
             setGameOver(game_over+1);
         }else if (tweet.controversy_score <= 70){
             setGameOver(Math.max(game_over-1, -2));
         }
-        console.log(game_over);
         const mult = game_over <= -2 ? 8 : 1;
         if(tweet.followers <= 0){
             tweet.followers = Math.max(tweet.followers * mult, -followers);
@@ -116,7 +112,6 @@ export default function Tweet({tweet, new_tweet, can_edit}){
         setDeleted(true);
         await tweet.delete(gather_tweets(), controversy_score);
         setControversy(tweet.controversy_score)
-        console.log(controversy_score);
         if(tweet.controversy_score >= 90){
             setGameOver(game_over+1);
         }else if (tweet.controversy_score <= 50){

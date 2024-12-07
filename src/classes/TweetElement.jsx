@@ -13,6 +13,8 @@ class TweetElement {
         this.image = null;
         this.can_edit = true;
         this.profile_picture = null;
+        this.notification = new Audio("./assets/sfx/noti.wav")
+        this.negative_notification = new Audio("./assets/sfx/negative.wav")
     }
 
 
@@ -43,6 +45,9 @@ class TweetElement {
             this.replies = data.replies;
 			this.followers = data.percentage_of_followers_gained_or_lost;
             this.controversy_score = data.controversy_score
+            if(!this.deleted){
+                this.notification.play();
+            }
         } catch (error) {
             console.error("Error during evaluation:", error);
         }
@@ -56,6 +61,7 @@ class TweetElement {
 		}
         this.followers = fws;
 		this.banned = 0;
+        this.negative_notification.play();
     }
 }
 

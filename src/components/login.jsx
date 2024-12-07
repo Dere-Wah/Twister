@@ -42,7 +42,7 @@ export default function Login({}){
                 login(username)
                 }}/>
 
-            <div className={`cool-scrollbar overflow-y-scroll px-2 text-sm w-full text-center overflow-hidden transition-height duration-300 ease-in-out ${showDisclaimer ? "h-52" : "h-0"}`}>
+            <div className={`cool-scrollbar overflow-y-scroll px-2 text-sm w-full text-center overflow-hidden transition-height duration-300 ease-in-out ${showDisclaimer ? "h-40" : "h-0"}`}>
                 Some response from this game are AI-generated.
                 I, the developer, am funding myself the API cost for these requests.
                 If you enjoy this game, please consider donating through itch.io a small amount to allow other players to keep playing it.
